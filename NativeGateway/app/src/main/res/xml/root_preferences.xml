@@ -1,0 +1,31 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Preference
+        android:icon="@drawable/ic_local_server"
+        app:layout="@layout/item_preference_pulse"
+        app:fragment="com.kalpcg.pulserelay.ui.settings.LocalServerSettingsFragment"
+        app:summary="@string/port_credentials_etc"
+        app:title="@string/local_server_dotdotdot" />
+
+    <PreferenceCategory
+        app:key="system"
+        app:layout="@layout/item_preference_category_pulse"
+        app:title="@string/system">
+        <Preference
+            android:icon="@drawable/ic_battery_optimizations"
+            app:layout="@layout/item_preference_pulse"
+            app:key="system.disable_battery_optimizations"
+            app:summary="@string/can_affect_battery_life"
+            app:title="@string/battery_optimization" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:layout="@layout/item_preference_category_pulse" app:title="@string/information">
+        <Preference
+            android:key="transient.app_version"
+            app:layout="@layout/item_preference_pulse"
+            android:title="@string/app_version_build"
+            app:persistent="false"
+            app:selectable="false" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:paddingBottom="100dp"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    tools:context=".ui.MessagesListFragment">
+
+    <!-- Fixed top panel with queue statistics -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/statisticsCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardBackgroundColor="@color/pulse_surface"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/pulse_stroke"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/queueTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/queue_status"
+                android:textColor="@color/pulse_navy"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- GridLayout for stats -->
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alignmentMode="alignMargins"
+                android:columnCount="3"
+                android:rowOrderPreserved="false"
+                android:useDefaultMargins="true">
+
+                <TextView
+                    android:id="@+id/totalMessages"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnSpan="2"
+                    android:layout_columnWeight="1"
+                    android:ellipsize="middle"
+                    android:singleLine="true"
+                    tools:text="Total: 0" />
+
+                <TextView
+                    android:id="@+id/pendingMessages"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:ellipsize="middle"
+                    android:singleLine="true"
+                    tools:text="Pending: 0" />
+
+                <TextView
+                    android:id="@+id/sentMessages"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:ellipsize="middle"
+                    android:singleLine="true"
+                    tools:text="Sent: 0" />
+
+                <TextView
+                    android:id="@+id/deliveredMessages"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:ellipsize="middle"
+                    android:singleLine="true"
+                    tools:text="Delivered: 0" />
+
+                <TextView
+                    android:id="@+id/failedMessages"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:ellipsize="middle"
+                    android:singleLine="true"
+                    tools:text="Failed: 0" />
+
+            </GridLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/searchMessagesLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="@string/messages_search_hint"
+                app:boxBackgroundColor="@color/pulse_surface_soft"
+                app:boxCornerRadiusBottomEnd="14dp"
+                app:boxCornerRadiusBottomStart="14dp"
+                app:boxCornerRadiusTopEnd="14dp"
+                app:boxCornerRadiusTopStart="14dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/searchMessagesInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                        android:textColor="@color/pulse_text_primary"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:scrollbars="none">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/stateFilterGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    app:singleSelection="true"
+                    app:selectionRequired="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/filterStateAll"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        app:chipBackgroundColor="@color/pulse_surface_soft"
+                        android:text="@string/filter_state_all" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/filterStatePending"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipBackgroundColor="@color/pulse_surface_soft"
+                        android:text="@string/filter_state_pending" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/filterStateSent"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipBackgroundColor="@color/pulse_surface_soft"
+                        android:text="@string/filter_state_sent" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/filterStateDelivered"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipBackgroundColor="@color/pulse_surface_soft"
+                        android:text="@string/filter_state_delivered" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/filterStateFailed"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipBackgroundColor="@color/pulse_surface_soft"
+                        android:text="@string/filter_state_failed" />
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- RecyclerView for messages -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_message" />
+
+</LinearLayout>

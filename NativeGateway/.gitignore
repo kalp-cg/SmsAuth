@@ -1,0 +1,31 @@
+# Android, Gradle, IDE
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+/app/build
+/app/release
+/app/.cxx
+/app/intermediates
+/app/outputs
+
+# Vue/React/Node
+node_modules/
+dist/
+npm-debug.log
+yarn-error.log
+
+# Env files (IMPORTANT)
+.env
+.env.local
+.env.*.local
+
+# Misc
+*.apk
+*.ap_
+*.aab

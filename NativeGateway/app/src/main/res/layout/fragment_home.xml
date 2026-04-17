@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="?android:colorBackground">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:clipToPadding="false"
+        android:paddingBottom="100dp">
+
+        <TextView
+            android:id="@+id/textConnectionStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_background"
+            android:backgroundTint="@color/pulse_navy"
+            android:enabled="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Internet Available" />
+
+        <!-- Massive Hero Button -->
+        <FrameLayout
+            android:id="@+id/heroButtonContainer"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintTop_toBottomOf="@id/textConnectionStatus"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- A subtle glowing shadow / backing circle -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_hero_start_off"
+                android:alpha="0.1"
+                android:scaleX="1.15"
+                android:scaleY="1.15"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonStart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:checkable="true"
+                android:text="@string/settings_offline"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/pulse_navy"
+                app:backgroundTint="@null"
+                android:background="@drawable/selector_hero_button"
+                app:cornerRadius="90dp"
+                app:elevation="8dp" />
+        </FrameLayout>
+
+        <!-- Local Server Settings Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardLocalServer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:cardBackgroundColor="@color/pulse_surface"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/pulse_stroke"
+            app:strokeWidth="1dp"
+            app:layout_constraintTop_toBottomOf="@id/heroButtonContainer">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/headerLocalServer"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_local_server"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textStyle="bold"
+                        android:textColor="@color/pulse_navy"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/switchUseLocalServer" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchUseLocalServer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <GridLayout
+                    android:id="@+id/layoutLocalServer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2"
+                    android:paddingTop="8dp"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <TextView style="@style/HomeCardLabel" android:text="@string/local_address" android:textColor="@color/pulse_text_secondary" />
+                    <TextView android:id="@+id/textLocalIP" style="@style/HomeCardValue" android:text="@string/dots" android:textColor="@color/pulse_text_primary" android:textStyle="bold" />
+
+                    <TextView style="@style/HomeCardLabel" android:text="@string/public_address" android:textColor="@color/pulse_text_secondary" />
+                    <TextView android:id="@+id/textPublicIP" style="@style/HomeCardValue" android:text="@string/dots" android:textColor="@color/pulse_text_primary" android:textStyle="bold"/>
+
+                    <TextView style="@style/HomeCardLabel" android:text="@string/label_username" android:textColor="@color/pulse_text_secondary" />
+                    <TextView android:id="@+id/textLocalUsername" style="@style/HomeCardValue" android:textColor="@color/pulse_text_primary" android:textStyle="bold" />
+
+                    <TextView style="@style/HomeCardLabel" android:text="@string/label_password" android:textColor="@color/pulse_text_secondary" />
+                    <TextView android:id="@+id/textLocalPassword" style="@style/HomeCardValue" android:textColor="@color/pulse_text_primary" android:textStyle="bold"/>
+
+                    <TextView style="@style/HomeCardLabel" android:text="@string/device_id" android:textColor="@color/pulse_text_secondary" />
+                    <TextView android:id="@+id/textLocalDeviceId" style="@style/HomeCardValue" android:textColor="@color/pulse_text_primary" android:textStyle="bold"/>
+                </GridLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Remote Server Settings Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardRemoteServer"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/pulse_surface"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/pulse_stroke"
+            app:strokeWidth="1dp"
+            app:layout_constraintTop_toBottomOf="@id/cardLocalServer">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/headerRemoteServer"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cloud_server"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textStyle="bold"
+                        android:textColor="@color/pulse_navy"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/switchUseRemoteServer" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchUseRemoteServer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <GridLayout
+                    android:id="@+id/layoutRemoteServer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2"
+                    android:paddingTop="8dp"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <TextView style="@style/HomeCardLabel" android:text="@string/server_address" android:textColor="@color/pulse_text_secondary" />
+                    <TextView android:id="@+id/textRemoteAddress" style="@style/HomeCardValue" android:text="@string/dots" android:textColor="@color/pulse_text_primary" android:textStyle="bold" />
+
+                    <TextView style="@style/HomeCardLabel" android:text="@string/label_username" android:textColor="@color/pulse_text_secondary" />
+                    <TextView android:id="@+id/textRemoteUsername" style="@style/HomeCardValue" android:textColor="@color/pulse_text_primary" android:textStyle="bold" />
+
+                    <TextView style="@style/HomeCardLabel" android:text="@string/label_password" android:textColor="@color/pulse_text_secondary" />
+                    <TextView android:id="@+id/textRemotePassword" style="@style/HomeCardValue" android:textColor="@color/pulse_text_primary" android:textStyle="bold" />
+
+                    <TextView style="@style/HomeCardLabel" android:text="@string/device_id" android:textColor="@color/pulse_text_secondary" />
+                    <TextView android:id="@+id/textRemoteDeviceId" style="@style/HomeCardValue" android:textColor="@color/pulse_text_primary" android:textStyle="bold" />
+                </GridLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Autostart Settings -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/pulse_surface_soft"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/pulse_stroke"
+            app:strokeWidth="1dp"
+            app:layout_constraintTop_toBottomOf="@id/cardRemoteServer">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchAutostart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="12dp"
+                android:text="@string/settings_start_on_boot"
+                android:textColor="@color/pulse_text_primary"
+                android:textStyle="bold" />
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

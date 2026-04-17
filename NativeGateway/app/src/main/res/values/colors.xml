@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="pulse_navy">#FF0E1B3D</color>
+    <color name="pulse_blue">#FF2563EB</color>
+    <color name="pulse_coral">#FFFF7A59</color>
+    <color name="pulse_mint">#FF2ED3B7</color>
+    <color name="pulse_gold">#FFF4B860</color>
+    <color name="pulse_bg_start">#FFF7FAFF</color>
+    <color name="pulse_bg_end">#FFEFF4FF</color>
+    <color name="pulse_surface">#FFFFFFFF</color>
+    <color name="pulse_surface_soft">#FFF4F7FF</color>
+    <color name="pulse_stroke">#FFD9E3FF</color>
+    <color name="pulse_text_primary">#FF172544</color>
+    <color name="pulse_text_secondary">#FF5A6785</color>
+    <color name="pulse_tab_active_bg">#FF0E1B3D</color>
+    <color name="pulse_tab_inactive_text">#FF415070</color>
+    <color name="pulse_tab_active_text">#FFFFFFFF</color>
+    <color name="pulse_power_off">#FF5E6B87</color>
+    <color name="pulse_power_on">#FF1F8A4D</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="progressBarOverlay">#33FFFFFF</color>
+    <color name="pulse_icon_bg">#FF0B1633</color>
+</resources>
