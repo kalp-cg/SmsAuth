@@ -26,12 +26,33 @@ This project is a 3-part microservice architecture:
 
 To make things easy, we have bundled the entire Android system into a ready-to-use APK.
 
-### Installation
+### Part 1: Install the App
 1. Go to the **[Releases Section](../../releases)** (or look in your local `release/` folder).
 2. Download the `PulseRelay.apk`.
 3. Transfer it to your Android device and install it (you may need to allow "Install from Unknown Sources").
 
-### Configuration
+### Part 2: If Play Protect Blocks Installation
+Some phones block APK installs with a message like "App blocked" or "Unverified app".
+
+1. Open the **Google Play Store** app.
+2. Tap your profile icon (top-right).
+3. Open **Play Protect**.
+4. Tap the settings icon.
+5. Turn off **Scan apps with Play Protect**.
+6. Go back and install `PulseRelay.apk` again.
+
+After successful install, you can re-enable Play Protect later if needed.
+
+### Part 3: If Android Blocks Notifications/Background Actions
+On some devices, OTP and message processing may fail silently unless app restrictions are disabled.
+
+1. Open **Settings -> Apps -> Pulse Relay -> App info**.
+2. Open **Notifications** and allow all required notification channels.
+3. Open **Battery** and set to **Unrestricted** (or disable battery optimization for this app).
+4. Open **Permissions** and allow **SMS** (and any required phone permissions).
+5. Re-open the app once after changing settings.
+
+### Part 4: Configure the Android Gateway
 1. Open the **Pulse Relay** app on your phone.
 2. Run through the permission checks: **Grant SMS Permissions** and **Ignore Battery Optimization** (so the background server continues to run when your screen is off).
 3. Start the Local Server. The app will display an Local IP address (e.g., `http://192.168.1.100:8080`).
@@ -75,6 +96,18 @@ The backend links your production web app/login system with the local native Gat
    ```
 
 It will now spin up an API at `http://localhost:3002`.
+
+### Part 5: Connect Web Auth to Your Phone Gateway
+This links your web OTP flow to the installed Android app:
+
+1. Ensure your phone and laptop are on the same Wi-Fi network.
+2. Copy phone local server URL from the app (example: `http://192.168.1.100:8080`).
+3. Put the same URL and app credentials in `otp-auth-service/.env`:
+   - `LOCAL_PULSE_RELAY_URL`
+   - `LOCAL_PULSE_RELAY_USER`
+   - `LOCAL_PULSE_RELAY_PASS`
+4. Start `otp-auth-service` and test OTP send API.
+5. Verify the SMS is received on the target phone number.
 
 ---
 
