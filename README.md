@@ -17,7 +17,7 @@ This project is a 3-part microservice architecture:
 ## 🎬 Demo and Docs Links
 
 1. YouTube Demo: https://youtu.be/fwpzjvzSN14?si=tVJXcWxhqVgpWyJ7
-2. Local Frontend Docs: http://localhost:5173/docs
+2. Local Frontend Docs: http://localhost:5173/docs (fork the repo first then settle it and then start the frontend now you can see the docs on given route.)
 3. Deployment: Frontend is deployed on Vercel.
 
 ---
